@@ -34,13 +34,17 @@ def word_game():
         word = word_dict.get("english_words")
         word_definition = word_dict.get("word_definition")
 
+
         # Начинаем игру
-        print(f"Значение слова - {word_definition}")
+        translator = Translator()
+        word_ru = translator.translate(word, "ru")
+        word_defenition_ru = translator.translate(word_definition, "ru")
+        print(f"Значение слова - {word_defenition_ru.text}")
         user = input("Что это за слово? ")
-        if user == word:
+        if user == word_ru.text:
             print("Все верно!")
         else:
-            print(f"Ответ неверный, было загадано это слово - {word}")
+            print(f"Ответ неверный, было загадано это слово - {word_ru.text}")
 
         # Создаём возможность закончить игру
         play_again = input("Хотите сыграть еще раз? y/n")
